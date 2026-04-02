@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbus Stress Monitor | Advanced Cloud Benchmarking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="glass header">
+            <h1>Nimbus <span>Stress Monitor</span></h1>
+            <p>Real-time system load simulation & monitoring</p>
+        </header>
+
+        <section class="stats-grid">
+            <!-- CPU Card -->
+            <div class="glass card">
+                <div class="card-header">
+                    <h2>CPU Utilization</h2>
+                    <span id="cpu-percent" class="badge">0%</span>
+                </div>
+                <div id="cpu-chart"></div>
+                <div class="controls">
+                    <label>Threads to Stress:</label>
+                    <input type="range" id="cpu-threads" min="1" max="16" value="1">
+                    <div class="button-group">
+                        <button id="start-cpu" class="btn btn-primary">Start CPU Stress</button>
+                        <button id="stop-cpu" class="btn btn-danger">Stop</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAM Card -->
+            <div class="glass card">
+                <div class="card-header">
+                    <h2>Memory Usage</h2>
+                    <span id="mem-percent" class="badge">0%</span>
+                </div>
+                <div id="mem-chart"></div>
+                <div class="controls">
+                    <label>Allocate RAM (MB):</label>
+                    <input type="number" id="ram-amount" value="512" step="256" min="128">
+                    <div class="button-group">
+                        <button id="allocate-ram" class="btn btn-primary">Allocate RAM</button>
+                        <button id="clear-ram" class="btn btn-danger">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="glass footer">
+            <div class="system-info">
+                <span>Cores available: <b id="core-count">--</b></span>
+                <span>OS: <b>Windows Node Environment</b></span>
+                <span id="active-status">System Stable</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
